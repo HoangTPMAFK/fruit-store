@@ -8,6 +8,8 @@ const groceriesContainer = document.querySelector("#groceries-container");
 const groceriesSort = document.querySelector("#groceries-sort");
 const fruitsContainer = document.querySelector("#fruits-container");
 const fruitsSort = document.querySelector("#fruits-sort");
+const juicesContainer = document.querySelector("#juices-container");
+const juicesSort = document.querySelector("#juices-sort");
 const shoppingList = document.querySelector("#shopping-list");
 const totalBill = document.querySelector("#total-bill");
 const totalBillPopup = document.querySelector("#total-bill-popup");
@@ -89,21 +91,78 @@ const groceries = [{
     img: "/build/img/orange.png",
     price: 10000
 }, {
-    name: "Nước cam",
-    img: "/build/img/orangejuice.png",
-    price: 12000
-}, {
     name: "Nước ép cà chua",
     img: "/build/img/tomatojuice.png",
-    price: 15000
+    price: 17000
 }, {
     name: "Nước ép dưa hấu",
     img: "/build/img/watermelonjuice.png",
-    price: 15000
+    price: 20000
 }, {
     name: "Nước ép cà rốt",
     img: "/build/img/carrotjuice.png",
+    price: 12000
+},{
+    name: "Nước cam",
+    img: "/build/img/orangejuice.png",
     price: 15000
+}, {
+    name: "Nước ép ổi",
+    img: "/build/img/guavajuice.png",
+    price: 18000
+}, {
+    name: "Nước ép dứa",
+    img: "/build/img/pineapplejuice.png",
+    price: 12000
+},{
+    name: "Nước ép lựu",
+    img: "/build/img/pomegranatejuice.png",
+    price: 20000
+}, {
+    name: "Nước ép táo",
+    img: "/build/img/applejuice.png",
+    price: 24000
+}, {
+    name: "Nước ép nho",
+    img: "/build/img/grapejuice.png",
+    price: 30000
+}];
+const juices = [{
+    name: "Nước ép cà chua",
+    img: "/build/img/tomatojuice.png",
+    price: 17000
+}, {
+    name: "Nước ép dưa hấu",
+    img: "/build/img/watermelonjuice.png",
+    price: 20000
+}, {
+    name: "Nước ép cà rốt",
+    img: "/build/img/carrotjuice.png",
+    price: 12000
+},{
+    name: "Nước cam",
+    img: "/build/img/orangejuice.png",
+    price: 15000
+}, {
+    name: "Nước ép ổi",
+    img: "/build/img/guavajuice.png",
+    price: 18000
+}, {
+    name: "Nước ép dứa",
+    img: "/build/img/pineapplejuice.png",
+    price: 12000
+},{
+    name: "Nước ép lựu",
+    img: "/build/img/pomegranatejuice.png",
+    price: 20000
+}, {
+    name: "Nước ép táo",
+    img: "/build/img/applejuice.png",
+    price: 24000
+}, {
+    name: "Nước ép nho",
+    img: "/build/img/grapejuice.png",
+    price: 30000
 }];
 let tempShoppingCart = localStorage.getItem("shoppingCart") ? JSON.parse(localStorage.getItem("shoppingCart")) : [];
 console.log(tempShoppingCart);
@@ -218,6 +277,47 @@ if (fruitsSort !== null) {
         displayFruits();
     })
 }
+if (juicesSort !== null) {
+    juicesSort.addEventListener("change", () => {
+        if (juicesSort.value == "sort1") {
+            juices.sort((a, b) => {
+                let fa = a.name.toLowerCase();
+                let fb = b.name.toLowerCase();
+                if (fa < fb) {
+                    return -1;
+                }
+                if (fa > fb) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+        if (juicesSort.value == "sort2") {
+            juices.sort((a, b) => {
+                let fa = a.name.toLowerCase();
+                let fb = b.name.toLowerCase();
+                if (fa < fb) {
+                    return 1;
+                }
+                if (fa > fb) {
+                    return -1;
+                }
+                return 0;
+            });
+        }
+        if (juicesSort.value == "sort3") {
+            juices.sort((a, b) => {
+                return a.price - b.price;
+            });
+        }
+        if (juicesSort.value == "sort4") {
+            juices.sort((a, b) => {
+                return b.price - a.price;
+            });
+        }
+        displayJuices();
+    })
+}
 function displayFruits() {
     s = '';
     fruits.forEach(item => {
@@ -280,21 +380,83 @@ function addToCart(event, arr) {
     calculateTotalBill();
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
 }
-function displayInCart() {
+function displayJuices() {
     s = '';
-    tempShoppingCart.forEach(item => {
+    juices.forEach(item => {
         s = s + 
-    `<div class="flex flex-row justify-between">
-        <div class="flex flex-row gap-4">
-            <img src="${item.img}" class="w-20 h-20">
+    `<div class="w-1/2 md:w-1/3 lg:w-1/4">
+        <div class="group py-2">
+            <img class="w-full hover:blur-md aspect-square" src="${item.img}">
+            <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, juices)">
+                <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="">
+                <div class="text-2xl font-semibold">${item.name}</div>
+            </a>
             <div>
-                <div class="text-3xl">${item.name}</div>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <div class="font-semibold">${item.price} VND</div>
+        </div>
+    </div>`
+    })
+    if (juicesSort !== null) juicesContainer.innerHTML = s;
+}
+displayJuices();
+function addToCart(event, arr) {
+    let itemName = event
+    .currentTarget
+    .parentNode
+    .parentNode
+    .getElementsByTagName("div")[3]
+    .textContent;
+    let index = -1;
+    let i = 0;
+    for (let i = 0; i < tempShoppingCart.length; i++) {
+        if (tempShoppingCart[i].name === itemName) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        arr.forEach(item => {
+            if (item.name === itemName) {
+                let name = item.name;
+                let img = item.img;
+                let price = item.price;
+                let quantity = 1;
+                tempShoppingCart.push({
+                    name, img, price, quantity
+                })
+            }
+        })
+    }
+    console.log(tempShoppingCart);
+    displayInCart();
+    calculateTotalBill();
+    localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
+}
+function displayInCart() {
+    let s = '';
+    tempShoppingCart.forEach(item => {
+        s += 
+    `<div class="flex flex-col sm:flex-row justify-between gap-4 p-4 border-b">
+        <div class="flex flex-col sm:flex-row gap-4 items-center">
+            <img src="${item.img}" class="w-20 h-20">
+            <div class="text-center sm:text-left">
+                <div class="text-xl sm:text-3xl">${item.name}</div>
                 <div>Giá: ${item.price} VND</div>
             </div>
         </div>
-        <div>
+        <div class="flex items-center gap-2 mt-4 sm:mt-0">
             <button class="bg-slate-200 p-2" onclick="removeOneQuantity(event)">-</button>
-            <input type="text" value="${item.quantity}" class="w-10 h-10">
+            <input type="text" value="${item.quantity}" class="w-10 h-10 text-center">
             <button class="bg-slate-200 p-2" onclick="addOneQuantity(event)">+</button>
             <button class="ml-6 bg-red-200 p-2" onclick="removeItemFromCart(event)">x</button>
         </div>
@@ -302,6 +464,8 @@ function displayInCart() {
     });
     shoppingList.innerHTML = s;
 }
+
+
 displayInCart();
 function calculateTotalBill() {
     let sum = 0;
