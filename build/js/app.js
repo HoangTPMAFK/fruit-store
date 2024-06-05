@@ -10,7 +10,7 @@ const fruitsContainer = document.querySelector("#fruits-container");
 const fruitsSort = document.querySelector("#fruits-sort");
 const shoppingList = document.querySelector("#shopping-list");
 const totalBill = document.querySelector("#total-bill");
-const totalBillPopup = document.querySelector("#total-bill-popup")
+const totalBillPopup = document.querySelector("#total-bill-popup");
 cartBtn.addEventListener("click", () => {
     cartPopup.classList.toggle("hidden");
 })
