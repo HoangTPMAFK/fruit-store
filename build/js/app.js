@@ -244,7 +244,7 @@ function displayGroceries() {
     })
     if (groceriesSort !== null) groceriesContainer.innerHTML = s;
 }
-displayGroceries();
+if (groceriesContainer !== null) displayGroceries();
 if (fruitsSort !== null) {
     fruitsSort.addEventListener("change", () => {
         if (fruitsSort.value == "sort1") {
@@ -357,12 +357,14 @@ function displayFruits() {
     })
     if (fruitsSort !== null) fruitsContainer.innerHTML = s;
 }
-displayFruits();
-searchBtn.addEventListener("click", () => {
-    displayGroceries();
-    displayFruits();
-    displayJuices();
-})
+if (fruitsContainer !== null) displayFruits();
+if (searchBtn !== null) {
+    searchBtn.addEventListener("click", () => {
+        displayGroceries();
+        displayFruits();
+        displayJuices();
+    })
+}
 function addToCart(event, arr) {
     let itemName = event
     .currentTarget
@@ -426,7 +428,7 @@ function displayJuices() {
     })
     if (juicesSort !== null) juicesContainer.innerHTML = s;
 }
-displayJuices();
+if (juicesContainer !== null) displayJuices();
 function addToCart(event, arr) {
     let itemName = event
     .currentTarget
