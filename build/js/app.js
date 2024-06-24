@@ -17,6 +17,8 @@ const totalBillPopup = document.querySelector("#total-bill-popup");
 const finalTotalBill = document.querySelector("#final-total-bill");
 const shippingMethod1 = document.querySelector("#f1");
 const shippingMethod2 = document.querySelector("#f2");
+const searchBar = document.querySelector("#search-bar");
+const searchBtn = document.querySelector("#search-btn");
 cartBtn.addEventListener("click", () => {
     cartPopup.classList.toggle("hidden");
 })
@@ -215,27 +217,30 @@ if (groceriesSort !== null) {
 function displayGroceries() {
     s = '';
     groceries.forEach(item => {
-        s = s + `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-        <div class="group py-2">
-            <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-            <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, groceries)">
-                <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="">
-                <div class="text-2xl font-semibold">${item.name}</div>
-            </a>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="font-semibold">${item.price} VND</div>
-        </div>
-    </div>`
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
+            s = s + 
+            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
+                <div class="group py-2">
+                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
+                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, groceries)">
+                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="">
+                        <div class="text-2xl font-semibold">${item.name}</div>
+                    </a>
+                    <div>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="font-semibold">${item.price} VND</div>
+                </div>
+            </div>`
+        }
     })
     if (groceriesSort !== null) groceriesContainer.innerHTML = s;
 }
@@ -325,32 +330,39 @@ if (juicesSort !== null) {
 function displayFruits() {
     s = '';
     fruits.forEach(item => {
-        s = s + 
-    `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-        <div class="group py-2">
-            <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-            <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, fruits)">
-                <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="">
-                <div class="text-2xl font-semibold">${item.name}</div>
-            </a>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="font-semibold">${item.price} VND</div>
-        </div>
-    </div>`
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
+            s = s + 
+            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
+                <div class="group py-2">
+                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
+                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, fruits)">
+                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="">
+                        <div class="text-2xl font-semibold">${item.name}</div>
+                    </a>
+                    <div>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="font-semibold">${item.price} VND</div>
+                </div>
+            </div>`
+        }
     })
     if (fruitsSort !== null) fruitsContainer.innerHTML = s;
 }
 displayFruits();
+searchBtn.addEventListener("click", () => {
+    displayGroceries();
+    displayFruits();
+    displayJuices();
+})
 function addToCart(event, arr) {
     let itemName = event
     .currentTarget
@@ -387,28 +399,30 @@ function addToCart(event, arr) {
 function displayJuices() {
     s = '';
     juices.forEach(item => {
-        s = s + 
-    `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-        <div class="group py-2">
-            <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-            <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, juices)">
-                <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="">
-                <div class="text-2xl font-semibold">${item.name}</div>
-            </a>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-            </div>
-            <div class="font-semibold">${item.price} VND</div>
-        </div>
-    </div>`
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
+            s = s + 
+            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
+                <div class="group py-2">
+                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
+                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, juices)">
+                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="">
+                        <div class="text-2xl font-semibold">${item.name}</div>
+                    </a>
+                    <div>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="font-semibold">${item.price} VND</div>
+                </div>
+            </div>`
+        }
     })
     if (juicesSort !== null) juicesContainer.innerHTML = s;
 }

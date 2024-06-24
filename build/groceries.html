@@ -79,13 +79,17 @@
         </section>
         <section>
             <article class="mx-auto max-w-4xl flex flex-row justify-between py-2">
-                <div>Hiển thị 1-12/12 kết quả</div>
+                <div>Hiển thị 1-17/17 kết quả</div>
                 <select id="groceries-sort" class="float-right">
                     <option value="sort1">Sắp xếp từ A-Z</option>
                     <option value="sort2">Sắp xếp từ Z-A</option>
                     <option value="sort3">Sắp xếp theo mức giá tăng dần</option>
                     <option value="sort4">Sắp xếp theo mức giá giảm dần</option>
                 </select>
+            </article>
+            <article class="mx-auto max-w-4xl flex gap-2">
+                <input id="search-bar" type="text" class="py-1 pl-2 flex-grow" placeholder="Tìm kiếm">
+                <button id="search-btn" class="bg-green-400 px-8 py-1 active:bg-green-600"><i class="fa-solid fa-magnifying-glass"></i></button>
             </article>
             <article class="mx-auto max-w-4xl">
                 <div id="groceries-container" class="flex flex-row flex-wrap">
