@@ -31,145 +31,116 @@ mobileMenu.addEventListener("click", () => {
 closeMenuBtn.addEventListener("click", () => {
     mobileMenuPopup.classList.toggle("hidden");
 })
-const fruits = [{
-    name: "Cà rốt",
-    img: "/build/img/carrot.png",
-    price: 20000
-}, {
-    name: "Cà chua",
-    img: "/build/img/tomato.png",
-    price: 17000
-}, {
-    name: "Xà lách",
-    img: "/build/img/salad.png",
-    price: 50000
-},{
-    name: "Mướp đắng",
-    img: "/build/img/bittermelon.png",
-    price: 20000
-}, {
-    name: "Khoai tây",
-    img: "/build/img/potato.png",
-    price: 25000
-}, {
-    name: "Khoai lang",
-    img: "/build/img/sweetpotato.png",
-    price: 27000
-}, {
-    name: "Dưa hấu",
-    img: "/build/img/watermelon.png",
-    price: 12000
-}, {
-    name: "Cam Vinh",
-    img: "/build/img/orange.png",
-    price: 10000
-}];
-const groceries = [{
-    name: "Cà rốt",
-    img: "/build/img/carrot.png",
-    price: 20000
-}, {
-    name: "Cà chua",
-    img: "/build/img/tomato.png",
-    price: 17000
-}, {
-    name: "Xà lách",
-    img: "/build/img/salad.png",
-    price: 50000
-}, {
-    name: "Mướp đắng",
-    img: "/build/img/bittermelon.png",
-    price: 20000
-}, {
-    name: "Khoai tây",
-    img: "/build/img/potato.png",
-    price: 25000
-}, {
-    name: "Khoai lang",
-    img: "/build/img/sweetpotato.png",
-    price: 27000
-}, {
-    name: "Dưa hấu",
-    img: "/build/img/watermelon.png",
-    price: 12000
-}, {
-    name: "Cam Vinh",
-    img: "/build/img/orange.png",
-    price: 10000
-}, {
-    name: "Nước ép cà chua",
-    img: "/build/img/tomatojuice.png",
-    price: 17000
-}, {
-    name: "Nước ép dưa hấu",
-    img: "/build/img/watermelonjuice.png",
-    price: 20000
-}, {
-    name: "Nước ép cà rốt",
-    img: "/build/img/carrotjuice.png",
-    price: 12000
-},{
-    name: "Nước cam",
-    img: "/build/img/orangejuice.png",
-    price: 15000
-}, {
-    name: "Nước ép ổi",
-    img: "/build/img/guavajuice.png",
-    price: 18000
-}, {
-    name: "Nước ép dứa",
-    img: "/build/img/pineapplejuice.png",
-    price: 12000
-},{
-    name: "Nước ép lựu",
-    img: "/build/img/pomegranatejuice.png",
-    price: 20000
-}, {
-    name: "Nước ép táo",
-    img: "/build/img/applejuice.png",
-    price: 24000
-}, {
-    name: "Nước ép nho",
-    img: "/build/img/grapejuice.png",
-    price: 30000
-}];
-const juices = [{
-    name: "Nước ép cà chua",
-    img: "/build/img/tomatojuice.png",
-    price: 17000
-}, {
-    name: "Nước ép dưa hấu",
-    img: "/build/img/watermelonjuice.png",
-    price: 20000
-}, {
-    name: "Nước ép cà rốt",
-    img: "/build/img/carrotjuice.png",
-    price: 12000
-},{
-    name: "Nước cam",
-    img: "/build/img/orangejuice.png",
-    price: 15000
-}, {
-    name: "Nước ép ổi",
-    img: "/build/img/guavajuice.png",
-    price: 18000
-}, {
-    name: "Nước ép dứa",
-    img: "/build/img/pineapplejuice.png",
-    price: 12000
-},{
-    name: "Nước ép lựu",
-    img: "/build/img/pomegranatejuice.png",
-    price: 20000
-}, {
-    name: "Nước ép táo",
-    img: "/build/img/applejuice.png",
-    price: 24000
-}, {
-    name: "Nước ép nho",
-    img: "/build/img/grapejuice.png",
-    price: 30000
-}];
+const fruits = [
+    {
+        name: "Cà rốt",
+        img: "/build/img/carrot.png",
+        prices: { '500g': 20000, '1kg': 38000, '5kg': 180000 },
+        type: 'fruit'
+    },
+    {
+        name: "Cà chua",
+        img: "/build/img/tomato.png",
+        prices: { '500g': 17000, '1kg': 32000, '5kg': 150000 },
+        type: 'fruit'
+    },
+    {
+        name: "Xà lách",
+        img: "/build/img/salad.png",
+        prices: { '500g': 50000, '1kg': 95000, '5kg': 450000 },
+        type: 'fruit'
+    },
+    {
+        name: "Mướp đắng",
+        img: "/build/img/bittermelon.png",
+        prices: { '500g': 20000, '1kg': 38000, '5kg': 180000 },
+        type: 'fruit'
+    },
+    {
+        name: "Khoai tây",
+        img: "/build/img/potato.png",
+        prices: { '500g': 25000, '1kg': 48000, '5kg': 230000 },
+        type: 'fruit'
+    },
+    {
+        name: "Khoai lang",
+        img: "/build/img/sweetpotato.png",
+        prices: { '500g': 27000, '1kg': 52000, '5kg': 250000 },
+        type: 'fruit'
+    },
+    {
+        name: "Dưa hấu",
+        img: "/build/img/watermelon.png",
+        prices: { '500g': 12000, '1kg': 22000, '5kg': 100000 },
+        type: 'fruit'
+    },
+    {
+        name: "Cam Vinh",
+        img: "/build/img/orange.png",
+        prices: { '500g': 10000, '1kg': 18000, '5kg': 85000 },
+        type: 'fruit'
+    }
+];
+
+const juices = [
+    {
+        name: "Nước ép cà chua",
+        img: "/build/img/tomatojuice.png",
+        prices: { S: 17000, M: 19000, L: 21000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép dưa hấu",
+        img: "/build/img/watermelonjuice.png",
+        prices: { S: 20000, M: 22000, L: 24000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép cà rốt",
+        img: "/build/img/carrotjuice.png",
+        prices: { S: 12000, M: 14000, L: 16000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước cam",
+        img: "/build/img/orangejuice.png",
+        prices: { S: 15000, M: 17000, L: 19000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép ổi",
+        img: "/build/img/guavajuice.png",
+        prices: { S: 18000, M: 20000, L: 22000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép dứa",
+        img: "/build/img/pineapplejuice.png",
+        prices: { S: 12000, M: 14000, L: 16000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép lựu",
+        img: "/build/img/pomegranatejuice.png",
+        prices: { S: 20000, M: 22000, L: 24000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép táo",
+        img: "/build/img/applejuice.png",
+        prices: { S: 24000, M: 26000, L: 28000 },
+        type: 'juice'
+    },
+    {
+        name: "Nước ép nho",
+        img: "/build/img/grapejuice.png",
+        prices: { S: 30000, M: 32000, L: 34000 },
+        type: 'juice'
+    }
+];
+
+const groceries = fruits.concat(juices);
+
 let tempShoppingCart = localStorage.getItem("shoppingCart") ? JSON.parse(localStorage.getItem("shoppingCart")) : [];
 console.log(tempShoppingCart);
 let s = ``;
@@ -215,36 +186,68 @@ if (groceriesSort !== null) {
     })
 }
 function displayGroceries() {
-    s = '';
+    let s = '';
     groceries.forEach(item => {
-        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
-            s = s + 
-            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-                <div class="group py-2">
-                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, groceries)">
-                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) !== -1) {
+            let sizeButtons = '';
+            if (item.type === 'juice') {
+                sizeButtons = `
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'S')">S</button>
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'M')">M</button>
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'L')">L</button>`;
+            } else if (item.type === 'fruit') {
+                sizeButtons = `
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '500g')">500g</button>
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '1kg')">1kg</button>
+                    <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '5kg')">5kg</button>`;
+            }
+
+            s += `
+            <div class="w-1/2 md:w-1/3 lg:w-1/4 p-2">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="group relative overflow-hidden">
+                        <img class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" src="${item.img}">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="addToCart(event, groceries)" class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <a href="">
+                            <div class="text-lg font-semibold">${item.name}</div>
+                        </a>
+                        <div class="text-gray-600">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</div>
+                        <div class="text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="font-semibold" id="${item.name}-price">${item.prices.S || item.prices['500g']} VND</div>
+                        <div class="mt-2 flex space-x-2">
+                            ${sizeButtons}
+                        </div>
                     </div>
                 </div>
-                <div class="text-center">
-                    <a href="">
-                        <div class="text-2xl font-semibold">${item.name}</div>
-                    </a>
-                    <div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <div class="font-semibold">${item.price} VND</div>
-                </div>
-            </div>`
+            </div>`;
         }
-    })
-    if (groceriesSort !== null) groceriesContainer.innerHTML = s;
+    });
+
+    if (groceriesContainer !== null) groceriesContainer.innerHTML = s;
 }
+
+function updatePrice(name, size) {
+    const item = groceries.find(item => item.name === name);
+    if (item) {
+        document.getElementById(`${name}-price`).innerText = item.prices[size] + " VND";
+    }
+}
+
 if (groceriesContainer !== null) displayGroceries();
+
+
 if (fruitsSort !== null) {
     fruitsSort.addEventListener("change", () => {
         if (fruitsSort.value == "sort1") {
@@ -330,32 +333,51 @@ if (juicesSort !== null) {
 function displayFruits() {
     s = '';
     fruits.forEach(item => {
-        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
-            s = s + 
-            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-                <div class="group py-2">
-                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, fruits)">
-                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) !== -1) {
+            let sizeButtons = `
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '500g')">500g</button>
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '1kg')">1kg</button>
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', '5kg')">5kg</button>`;
+
+            s += `
+            <div class="w-1/2 md:w-1/3 lg:w-1/4 p-2">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="group relative overflow-hidden">
+                        <img class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" src="${item.img}">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="addToCart(event, fruits)" class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <a href="">
+                            <div class="text-lg font-semibold">${item.name}</div>
+                        </a>
+                        <div class="text-gray-600">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</div>
+                        <div class="text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="font-semibold" id="${item.name}-price">${item.prices['500g']} VND</div>
+                        <div class="mt-2 flex space-x-2">
+                            ${sizeButtons}
+                        </div>
                     </div>
                 </div>
-                <div class="text-center">
-                    <a href="">
-                        <div class="text-2xl font-semibold">${item.name}</div>
-                    </a>
-                    <div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <div class="font-semibold">${item.price} VND</div>
-                </div>
-            </div>`
+            </div>`;
         }
-    })
+    });
     if (fruitsSort !== null) fruitsContainer.innerHTML = s;
+}
+function updatePrice(name, size) {
+    const item = groceries.find(item => item.name === name);
+    if (item) {
+        document.getElementById(`${name}-price`).innerText = item.prices[size] + " VND";
+    }
 }
 if (fruitsContainer !== null) displayFruits();
 if (searchBtn !== null) {
@@ -366,102 +388,100 @@ if (searchBtn !== null) {
     })
 }
 function addToCart(event, arr) {
-    let itemName = event
-    .currentTarget
-    .parentNode
-    .parentNode
-    .getElementsByTagName("div")[3]
-    .textContent;
-    let index = -1;
-    let i = 0;
-    for (let i = 0; i < tempShoppingCart.length; i++) {
-        if (tempShoppingCart[i].name === itemName) {
-            index = i;
-            break;
-        }
+    let itemNameElement = event.currentTarget.closest(".group").nextElementSibling.querySelector("div.text-lg.font-semibold");
+    if (!itemNameElement) {
+        console.error("Item name element not found");
+        return;
     }
-    if (index == -1) {
-        arr.forEach(item => {
-            if (item.name === itemName) {
-                let name = item.name;
-                let img = item.img;
-                let price = item.price;
-                let quantity = 1;
-                tempShoppingCart.push({
-                    name, img, price, quantity
-                })
-            }
-        })
+
+    let itemName = itemNameElement.textContent;
+
+    let item = arr.find(item => item.name === itemName);
+    if (!item) {
+        console.error("Item not found in array");
+        return;
     }
-    console.log(tempShoppingCart);
+
+    let priceElement = document.getElementById(`${item.name}-price`);
+    let currentPrice = parseInt(priceElement.innerText.replace(" VND", ""));
+
+    let selectedSize;
+    if (item.type === 'juice') {
+        selectedSize = Object.keys(item.prices).find(size => item.prices[size] === currentPrice);
+    } else if (item.type === 'fruit') {
+        selectedSize = Object.keys(item.prices).find(size => item.prices[size] === currentPrice);
+    }
+
+    if (!selectedSize) {
+        console.error("Selected size not found");
+        return;
+    }
+
+    let index = tempShoppingCart.findIndex(cartItem => cartItem.name === itemName && cartItem.size === selectedSize);
+
+    if (index === -1) {
+        let newItem = { name: item.name, img: item.img, price: currentPrice, quantity: 1, size: selectedSize };
+        tempShoppingCart.push(newItem);
+    } else {
+        tempShoppingCart[index].quantity += 1;
+    }
+
     displayInCart();
     calculateTotalBill();
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
 }
+
 function displayJuices() {
-    s = '';
+    let s = '';
     juices.forEach(item => {
-        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) != -1) {
-            s = s + 
-            `<div class="w-1/2 md:w-1/3 lg:w-1/4">
-                <div class="group py-2">
-                    <img class="w-full hover:blur-md aspect-square" src="${item.img}">
-                    <div class="group-hover:block hidden relative left-1/2 bottom-6 w-fit -translate-x-1/2 h-0" onclick="addToCart(event, juices)">
-                        <i class="fa-solid fa-cart-shopping hover:text-white hover:bg-green-400 p-2"></i>
+        if (item.name.toLowerCase().indexOf(searchBar.value.toLowerCase()) !== -1) {
+            let sizeButtons = `
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'S')">S</button>
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'M')">M</button>
+                <button class="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors" onclick="updatePrice('${item.name}', 'L')">L</button>`;
+
+            s += `
+            <div class="w-1/2 md:w-1/3 lg:w-1/4 p-2">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="group relative overflow-hidden">
+                        <img class="w-full aspect-square object-cover transition-transform duration-300 group-hover:scale-110" src="${item.img}">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button onclick="addToCart(event, juices)" class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <a href="">
+                            <div class="text-lg font-semibold">${item.name}</div>
+                        </a>
+                        <div class="text-gray-600">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</div>
+                        <div class="text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="font-semibold" id="${item.name}-price">${item.prices.S} VND</div>
+                        <div class="mt-2 flex space-x-2">
+                            ${sizeButtons}
+                        </div>
                     </div>
                 </div>
-                <div class="text-center">
-                    <a href="">
-                        <div class="text-2xl font-semibold">${item.name}</div>
-                    </a>
-                    <div>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                    <div class="font-semibold">${item.price} VND</div>
-                </div>
-            </div>`
+            </div>`;
         }
-    })
-    if (juicesSort !== null) juicesContainer.innerHTML = s;
+    });
+    if (juicesContainer !== null) juicesContainer.innerHTML = s;
 }
-if (juicesContainer !== null) displayJuices();
-function addToCart(event, arr) {
-    let itemName = event
-    .currentTarget
-    .parentNode
-    .parentNode
-    .getElementsByTagName("div")[3]
-    .textContent;
-    let index = -1;
-    let i = 0;
-    for (let i = 0; i < tempShoppingCart.length; i++) {
-        if (tempShoppingCart[i].name === itemName) {
-            index = i;
-            break;
-        }
+function updatePrice(name, size) {
+    const item = groceries.find(item => item.name === name);
+    if (item) {
+        document.getElementById(`${name}-price`).innerText = item.prices[size] + " VND";
     }
-    if (index == -1) {
-        arr.forEach(item => {
-            if (item.name === itemName) {
-                let name = item.name;
-                let img = item.img;
-                let price = item.price;
-                let quantity = 1;
-                tempShoppingCart.push({
-                    name, img, price, quantity
-                })
-            }
-        })
-    }
-    console.log(tempShoppingCart);
-    displayInCart();
-    calculateTotalBill();
-    localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
 }
+if (fruitsContainer !== null) displayJuices();
+
 function displayInCart() {
     let s = '';
     tempShoppingCart.forEach(item => {
@@ -515,7 +535,7 @@ function displayInFinalCart() {
                     <div class="text-xl">${item.price} <span class="hidden sm:inline-block">VND</span></div>
                 </div>
                 <div class="md:hidden">
-                    <button class="bg-red-200 px-2 py-1 flex-grow-0" onclick="removeItemFromCart(event)">x</button>
+                    <button class="bg-red-200 px-2 py-1 flex-grow-0" onclick="removeItemFromCart2(event)">x</button>
                 </div>
             </div>`;
         });
@@ -592,6 +612,16 @@ function removeItemFromCart(event) {
     let itemName = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].textContent;
     tempShoppingCart = tempShoppingCart.filter(item => {
         return item.name !== itemName;
+    })
+    localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
+    displayInCart();
+    displayInFinalCart();
+    calculateTotalBill();
+}
+function removeItemFromCart2(event) {
+    let itemName2 = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[0].getElementsByTagName("div")[1].getElementsByTagName("div")[0].textContent;
+    tempShoppingCart = tempShoppingCart.filter(item => {
+        return item.name !== itemName2;
     })
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
     displayInCart();
