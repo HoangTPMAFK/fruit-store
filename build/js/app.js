@@ -2,6 +2,7 @@ const mobileMenu = document.querySelector("#mobile-menu");
 const mobileMenuPopup = document.querySelector("#mobile-menu-popup");
 const cartPopup = document.querySelector("#cart-popup");
 const cartBtn = document.querySelector("#cart-btn");
+const cartContainer = document.querySelector("#cart-container");
 const closeCartBtn = document.querySelector('#close-cart-btn');
 const closeMenuBtn = document.querySelector('#close-menu-btn');
 const groceriesContainer = document.querySelector("#groceries-container");
@@ -13,6 +14,9 @@ const juicesSort = document.querySelector("#juices-sort");
 const shoppingList = document.querySelector("#shopping-list");
 const totalBill = document.querySelector("#total-bill");
 const totalBillPopup = document.querySelector("#total-bill-popup");
+const finalTotalBill = document.querySelector("#final-total-bill");
+const shippingMethod1 = document.querySelector("#f1");
+const shippingMethod2 = document.querySelector("#f2");
 cartBtn.addEventListener("click", () => {
     cartPopup.classList.toggle("hidden");
 })
@@ -446,12 +450,12 @@ function displayInCart() {
     let s = '';
     tempShoppingCart.forEach(item => {
         s += 
-    `<div class="flex flex-col sm:flex-row justify-between gap-4 p-4 border-b">
+    `<div class="flex flex-col md:flex-row justify-between gap-4 p-4 border-b">
         <div class="flex flex-col sm:flex-row gap-4 items-center">
             <img src="${item.img}" class="w-20 h-20">
             <div class="text-center sm:text-left">
-                <div class="text-xl sm:text-3xl">${item.name}</div>
-                <div>Giá: ${item.price} VND</div>
+                <div class="text-xl font-semibold">${item.name}</div>
+                <div class="text-lg">Giá: ${item.price} VND</div>
             </div>
         </div>
         <div class="flex items-center gap-2 mt-4 sm:mt-0">
@@ -464,8 +468,59 @@ function displayInCart() {
     });
     shoppingList.innerHTML = s;
 }
-
-
+function displayInFinalCart() {
+    if (cartContainer !== null) {
+        let s = 
+        `<div class="hidden md:flex flex-row text-center justify-between gap-4 p-4">
+            <div class="w-2/5">Sản phẩm</div>
+            <div class="w-1/3 pr-2 sm:pr-8 md:pr-14">Số lượng</div>
+            <div>Giá thành</div>
+        </div>`;
+        tempShoppingCart.forEach(item => {
+            s = s + 
+            `<div class="flex flex-row justify-between gap-4 p-4 items-center">
+                <div class="flex flex-col sm:flex-row gap-4 items-center w-2/5 ">
+                    <div class="flex flex-col items-center gap-2">
+                        <img src="${item.img}" class="w-20 h-20">
+                        <button class="bg-red-200 px-2 py-1 hidden md:block flex-grow-0" onclick="removeItemFromCart(event)">x</button>
+                    </div>
+                    
+                    <div class="text-center sm:text-left">
+                        <div class="text-lg sm:text-2xl">${item.name}</div>
+                        <div class="text-lg sm:hidden">Giá: <span class="text-green-600">${item.price} VND</span></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 mt-4 sm:mt-0 w-1/3 justify-center">
+                    <button class="bg-slate-200 p-1 md:p-2" onclick="removeOneQuantity(event)">-</button>
+                    <input type="text" value="${item.quantity}" class="w-10 h-10 md:w-6 md:h-6 text-center">
+                    <button class="bg-slate-200 p-1 md:p-2" onclick="addOneQuantity(event)">+</button>
+                </div>
+                <div class="hidden md:block">
+                    <div class="text-xl">${item.price} <span class="hidden sm:inline-block">VND</span></div>
+                </div>
+                <div class="md:hidden">
+                    <button class="bg-red-200 px-2 py-1 flex-grow-0" onclick="removeItemFromCart(event)">x</button>
+                </div>
+            </div>`;
+        });
+        cartContainer.innerHTML = s;
+    }
+}
+displayInFinalCart();
+if (shippingMethod1 !== null && shippingMethod2 !== null) {
+    shippingMethod1.addEventListener("click", () => {
+        if (shippingMethod1.checked) {
+            document.querySelector("#f1-infos").classList.toggle("hidden");
+            document.querySelector("#f2-infos").classList.toggle("hidden");
+        }
+    });
+    shippingMethod2.addEventListener("click", () => {
+        if (shippingMethod2.checked) {
+            document.querySelector("#f1-infos").classList.toggle("hidden");
+            document.querySelector("#f2-infos").classList.toggle("hidden");
+        }
+    });
+}
 displayInCart();
 function calculateTotalBill() {
     let sum = 0;
@@ -474,37 +529,48 @@ function calculateTotalBill() {
     })
     totalBill.textContent = sum + " VND";
     totalBillPopup.textContent = sum + " VND";
+    if (finalTotalBill !== null) finalTotalBill.textContent = "Giá: " + sum + " VNĐ";
 }
 calculateTotalBill();
 function removeOneQuantity(event) {
     let quantity = event.currentTarget.parentNode.getElementsByTagName("input")[0].value;
     let itemName = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].textContent;
+    let itemName2 = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].getElementsByTagName("div")[0];
     if (quantity > 1) {
         quantity--;
         event.currentTarget.parentNode.getElementsByTagName("input")[0].value = quantity;
         tempShoppingCart.forEach(item => {
             if (item.name === itemName) {
                 item.quantity = quantity;
+            } else {
+                if (itemName2 != null && item.name === itemName2.textContent) 
+                    item.quantity = quantity;
             }
         })
         localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
-        console.log(tempShoppingCart);
+        // console.log(tempShoppingCart);
     }
+    displayInFinalCart();
     calculateTotalBill();
 }
 function addOneQuantity(event) {
     let quantity = event.currentTarget.parentNode.getElementsByTagName("input")[0].value;
     let itemName = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].textContent;
+    let itemName2 = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].getElementsByTagName("div")[0];
     quantity++;
     event.currentTarget.parentNode.getElementsByTagName("input")[0].value = quantity;
     tempShoppingCart.forEach(item => {
         if (item.name === itemName) {
             item.quantity = quantity;
+        } else {
+            if (itemName2 != null && item.name === itemName2.textContent) 
+                item.quantity = quantity;
         }
     })
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
     console.log(tempShoppingCart);
     calculateTotalBill();
+    displayInFinalCart();
 }
 function removeItemFromCart(event) {
     let itemName = event.currentTarget.parentNode.parentNode.getElementsByTagName("div")[2].textContent;
@@ -513,5 +579,6 @@ function removeItemFromCart(event) {
     })
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
     displayInCart();
+    displayInFinalCart();
     calculateTotalBill();
 }
