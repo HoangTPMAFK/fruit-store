@@ -542,15 +542,15 @@ function removeOneQuantity(event) {
         tempShoppingCart.forEach(item => {
             if (item.name === itemName) {
                 item.quantity = quantity;
-            } else {
-                if (itemName2 != null && item.name === itemName2.textContent) 
-                    item.quantity = quantity;
+            } else if (itemName2 != null && item.name === itemName2.textContent) {
+                item.quantity = quantity;
             }
         })
         localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
         // console.log(tempShoppingCart);
     }
     displayInFinalCart();
+    displayInCart();
     calculateTotalBill();
 }
 function addOneQuantity(event) {
@@ -562,14 +562,14 @@ function addOneQuantity(event) {
     tempShoppingCart.forEach(item => {
         if (item.name === itemName) {
             item.quantity = quantity;
-        } else {
-            if (itemName2 != null && item.name === itemName2.textContent) 
-                item.quantity = quantity;
+        } else if (itemName2 != null && item.name === itemName2.textContent) {
+            item.quantity = quantity;
         }
     })
     localStorage.setItem("shoppingCart", JSON.stringify(tempShoppingCart));
-    console.log(tempShoppingCart);
+    // console.log(tempShoppingCart);
     calculateTotalBill();
+    displayInCart();
     displayInFinalCart();
 }
 function removeItemFromCart(event) {
